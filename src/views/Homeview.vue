@@ -1,10 +1,9 @@
 <script setup>
-
+import Header from '../components/Header.vue';
 </script>
 
 <template>
-
-    <h2>home</h2>
+    <Header titulo="Pasion Futbolera" />
 </template>
 
 <style scoped></style>

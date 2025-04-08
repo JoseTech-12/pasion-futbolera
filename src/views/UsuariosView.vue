@@ -1,19 +1,44 @@
 <script setup>
-
+import Header from '../components/Header.vue';
+import TableUsers from '../components/TableUsers.vue';
+import SearchBar from '../components/SearchBar.vue';
 </script>
 
 <template>
-    <h1>Usuarios</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ad illum placeat aut adipisci molestiae!
-        Repellat, corrupti odio nam itaque, enim ipsum nisi natus ratione architecto facilis explicabo magni doloremque!
-    </p>
+    <Header titulo="Usuarios" />
+    <div class="container-btn-agregar">
+        <v-btn class="btn-agregar">
+            <v-icon>mdi-plus</v-icon>
+            <span>Agregar Usuario</span>
+        </v-btn>
+
+    </div>
+    <div class="container">
+        <div>
+            <p>Lista de usuarios registrados en la tienda.</p>
+
+        </div>
+
+        <TableUsers />
+    </div>
+
 </template>
 
 <style scoped>
-h1 {
-    color: #42b883;
-    font-size: 2em;
-    text-align: center;
-    margin-top: 20px;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    margin: 0 auto;
+}
+
+.container-btn-agregar {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-right: 30px;
 }
 </style>

@@ -9,7 +9,7 @@ watchEffect(() => {
   drawer.value = !mobile.value
 })
 
-// Cierra el drawer al seleccionar un ítem (en móvil)
+
 const cerrarDrawer = () => {
   if (mobile.value) {
     drawer.value = false
@@ -24,7 +24,7 @@ const cerrarDrawer = () => {
       class="custom-drawer">
       <v-list-item class="titulo" title="Dashboard" />
       <v-divider />
-      <v-list-item class="items" :to="{ name: 'home' }" link @click="cerrarDrawer">
+      <v-list-item class="items" :to="{ name: 'pasion-futbolera' }" link @click="cerrarDrawer">
         <template #prepend>
           <v-icon>mdi-home</v-icon>
           <v-list-item-title>Inicio</v-list-item-title>
@@ -47,10 +47,20 @@ const cerrarDrawer = () => {
 
       </v-list-item>
 
+      <v-list-item class="items" :to="{ name: 'ventas' }" link @click="cerrarDrawer">
+        <template class="conten-items" #prepend>
+          <v-icon>mdi-cart</v-icon>
+          <v-list-item-title>Ventas</v-list-item-title>
+        </template>
+
+      </v-list-item>
+
+
+
     </v-navigation-drawer>
 
-    <v-main>
-      <router-view /> <!-- Aquí se renderizan las páginas -->
+    <v-main class="main">
+      <router-view />
     </v-main>
 
     <v-btn v-if="mobile" class="floating-button" @click="drawer = true">
@@ -59,7 +69,7 @@ const cerrarDrawer = () => {
   </v-app>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .menu-nav {
   background-color: white;
   height: 100vh;
@@ -84,17 +94,22 @@ const cerrarDrawer = () => {
   bottom: 16px;
   left: 16px;
   z-index: 1000;
-  background-color: #1e1e2f;
+  background-color: $color-secondary;
   color: white;
 }
 
 .custom-drawer {
-  background-color: #1e1e2f;
+  background-color: $color-secondary;
   color: white;
 }
+
 
 .conten-items {
   display: flex;
   justify-content: space-around;
+}
+
+.main {
+  background-color: $color-primary;
 }
 </style>

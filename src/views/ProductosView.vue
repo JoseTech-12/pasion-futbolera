@@ -1,9 +1,10 @@
 <script setup>
-
+import Header from '../components/Header.vue';
 </script>
 
 <template>
-    <div>productos</div>
+    <Header titulo="Productos" />
+
 </template>
 
 <style scoped></style>
