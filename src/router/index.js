@@ -23,7 +23,7 @@ const routes = [
         component: UsuariosView
     },
     {
-        path: '/pasion-futbolera/productos',
+        path: '/pasion-futbolera/inventario',
         name: 'productos',
         component: ProductosView
     },
@@ -32,8 +32,6 @@ const routes = [
         name: 'ventas',
         component: VentasView
     }
-
-
 ]
 
 const router = createRouter({

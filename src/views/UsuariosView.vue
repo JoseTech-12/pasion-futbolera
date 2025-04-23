@@ -1,7 +1,12 @@
 <script setup>
 import Header from '../components/Header.vue';
 import TableUsers from '../components/TableUsers.vue';
-import SearchBar from '../components/SearchBar.vue';
+
+import { useUsersStore } from '../store/UsersStore';
+import { storeToRefs } from 'pinia';
+
+const store = useUsersStore();
+const { users, headers } = storeToRefs(store)
 </script>
 
 <template>
@@ -16,15 +21,14 @@ import SearchBar from '../components/SearchBar.vue';
     <div class="container">
         <div>
             <p>Lista de usuarios registrados en la tienda.</p>
-
         </div>
 
-        <TableUsers />
+        <TableUsers :items="users" :headers="headers" />
     </div>
 
 </template>
 
-<style scoped>
+<style>
 .container {
     display: flex;
     flex-direction: column;

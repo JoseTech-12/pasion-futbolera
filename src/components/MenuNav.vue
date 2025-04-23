@@ -34,7 +34,7 @@ const cerrarDrawer = () => {
       <v-list-item class="items" :to="{ name: 'productos' }" link @click="cerrarDrawer">
         <template #prepend>
           <v-icon>mdi-tshirt-crew</v-icon>
-          <v-list-item-title>Productos</v-list-item-title>
+          <v-list-item-title>Inventario</v-list-item-title>
         </template>
       </v-list-item>
 
