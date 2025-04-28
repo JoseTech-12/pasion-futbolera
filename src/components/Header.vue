@@ -1,5 +1,11 @@
 <script setup>
 import { defineProps } from 'vue';
+import { useUsersLogStore } from "../store/UserLogStore.js"
+import { storeToRefs } from 'pinia';
+import router from '../router/index.js';
+
+const store = useUsersLogStore();
+const { user } = storeToRefs(store)
 
 defineProps({
     titulo: {
@@ -8,15 +14,30 @@ defineProps({
     }
 });
 
+const logout = async () => {
+
+    await store.logout()
+    router.push({ name: 'pasion-futbolera-login' })
+    localStorage.removeItem('token');
+
+
+
+}
+
 </script>
 
 <template>
     <header>
         <h1>{{ titulo }}</h1>
-        <button>
-            <v-icon>mdi-account</v-icon>
-            <span>Login</span>
-        </button>
+        <div class="contenerdo-btns"><button>
+                <v-icon>mdi-account</v-icon>
+                <span>{{ user.rol }}</span>
+            </button>
+            <button @click="logout">
+                <v-icon>mdi-logout</v-icon>
+            </button>
+        </div>
+
     </header>
 </template>
 
@@ -41,6 +62,12 @@ button {
     align-items: center;
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+.contenerdo-btns {
+    display: flex;
+
+    gap: 20px;
 }
 
 button:hover {

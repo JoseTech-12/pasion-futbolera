@@ -2,11 +2,11 @@
 import Header from '../components/Header.vue';
 import TableUsers from '../components/TableUsers.vue';
 
-import { useUsersStore } from '../store/UsersStore';
+import { useClientsStore } from '../store/ClientsStore';
 import { storeToRefs } from 'pinia';
 
-const store = useUsersStore();
-const { users, headers } = storeToRefs(store)
+const store = useClientsStore();
+const { clients, headers } = storeToRefs(store)
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const { users, headers } = storeToRefs(store)
             <p>Lista de usuarios registrados en la tienda.</p>
         </div>
 
-        <TableUsers :items="users" :headers="headers" />
+        <TableUsers :items="clients" :headers="headers" />
     </div>
 
 </template>

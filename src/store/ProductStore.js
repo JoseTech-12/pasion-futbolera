@@ -18,6 +18,20 @@ export const useProductStore = defineStore('products', () => {
             descripcion: 'Balón de futbol oficial',
             stock: 50
         },
+        {
+            id: 1,
+            nombre: 'Camiseta de Futbol',
+            precio: 29.99,
+            descripcion: 'Camiseta de futbol de alta calidad',
+            stock: 100
+        },
+        {
+            id: 1,
+            nombre: 'Camiseta de Futbol',
+            precio: 29.99,
+            descripcion: 'Camiseta de futbol de alta calidad',
+            stock: 100
+        },
 
     ])
     const headers = ref([
@@ -28,6 +42,8 @@ export const useProductStore = defineStore('products', () => {
         { title: 'Stock', value: 'stock', sortable: false },
         { title: 'Acciones', value: 'acciones', sortable: false, align: 'end' }
     ])
+
+
     return {
         products,
         headers

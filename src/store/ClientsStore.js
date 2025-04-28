@@ -3,8 +3,8 @@ import { ref } from 'vue'
 
 
 
-export const useUsersStore = defineStore('users', () => {
-    const users = ref([
+export const useClientsStore = defineStore('clients', () => {
+    const clients = ref([
         {
             id: 3245454,
             nombre: 'Juan Perez',
@@ -107,7 +107,7 @@ export const useUsersStore = defineStore('users', () => {
     ])
 
     return {
-        users,
+        clients,
         headers
     }
 })

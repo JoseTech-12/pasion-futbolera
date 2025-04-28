@@ -1,6 +1,15 @@
 <script setup>
 import { ref, watchEffect } from 'vue'
 import { useDisplay } from 'vuetify'
+import { useUsersLogStore } from "../store/UserLogStore.js"
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue'
+
+
+
+const store = useUsersLogStore();
+const { user } = storeToRefs(store)
+const isAdmin = computed(() => user.value.rol === 'Administrador')
 
 const drawer = ref(true)
 const { mobile } = useDisplay()
@@ -8,8 +17,6 @@ const { mobile } = useDisplay()
 watchEffect(() => {
   drawer.value = !mobile.value
 })
-
-
 const cerrarDrawer = () => {
   if (mobile.value) {
     drawer.value = false
@@ -42,7 +49,7 @@ const cerrarDrawer = () => {
       <v-list-item class="items" :to="{ name: 'usuarios' }" link @click="cerrarDrawer">
         <template class="conten-items" #prepend>
           <v-icon>mdi-account</v-icon>
-          <v-list-item-title>Usuarios</v-list-item-title>
+          <v-list-item-title>clientes</v-list-item-title>
         </template>
 
       </v-list-item>
@@ -55,7 +62,13 @@ const cerrarDrawer = () => {
 
       </v-list-item>
 
+      <v-list-item class="items" :to="{ name: 'administrar-usuarios' }" link @click="cerrarDrawer" v-if="isAdmin">
+        <template class="conten-items" #prepend>
+          <v-icon>mdi-account</v-icon>
+          <v-list-item-title>Administrar Usuarios</v-list-item-title>
+        </template>
 
+      </v-list-item>
 
     </v-navigation-drawer>
 
