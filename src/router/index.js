@@ -4,6 +4,8 @@ import UsuariosView from '../views/UsuariosView.vue'
 import ProductosView from '../views/ProductosView.vue'
 import VentasView from '../views/VentasView.vue'
 import AdministrarView from '../views/AdministrarView.vue'
+import NewUserView from '../views/NewUserView.vue'
+import EditarUsuarios from '../views/EditarUsuarios.vue'
 
 
 
@@ -50,7 +52,20 @@ const routes = [
         component: AdministrarView,
         meta: { requiresAuth: true }
     }
-
+    ,
+    {
+        path: '/pasion-futbolera/crear-usuario',
+        name: 'crear-usuario',
+        component: NewUserView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/editar-usuario/:id',
+        name: 'editar-usuario',
+        component: EditarUsuarios,
+        meta: { requiresAuth: true },
+        props: true
+    }
 ]
 
 const router = createRouter({

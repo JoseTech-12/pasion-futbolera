@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 import router from '../router/index.js';
 
 const store = useUsersLogStore();
-const { user } = storeToRefs(store)
+const alert = ref(false)
 
 
 
@@ -31,16 +31,15 @@ const passwordRules = [
         if (value) return true
         return 'La contraseña es requerida'
     }
+
 ]
 
 const loggear = async () => {
 
     if (!valid.value) {
-        console.log('Formulario inválido')
+        alert.value = true
         return
     }
-
-
 
     try {
         const userData = {
@@ -55,7 +54,7 @@ const loggear = async () => {
 
     } catch (error) {
         console.error('Error al iniciar sesión:', error.response?.data?.message || error.message)
-
+        alert.value = true
     }
 
 }
@@ -72,7 +71,9 @@ const loggear = async () => {
             <v-text-field v-model="email" :rules="emailRules" label="Email" required></v-text-field>
             <v-text-field v-model="password" :rules="passwordRules" label="Password" type="password"
                 required></v-text-field>
+            <v-alert v-model="alert" type="error" dismissible>Usuario o contraseña incorrectos</v-alert>
             <v-btn class="btn" @click="loggear">Iniciar sesion</v-btn>
+
         </div>
     </v-form>
 </template>

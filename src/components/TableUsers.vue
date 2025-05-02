@@ -4,7 +4,9 @@ import { ref, computed, defineProps } from 'vue';
 
 const props = defineProps({
     items: Array,
-    headers: Array
+    headers: Array,
+    eliminarItem: Function,
+    editarItem: Function
 })
 
 const searchQuery = ref('');
@@ -28,10 +30,10 @@ const filteredItems = computed(() =>
 
             <template #item.acciones="{ item }">
                 <div class="d-flex align-center ga-1">
-                    <v-btn icon color="blue" @click="editarItem(item)">
+                    <v-btn icon color="blue" @click="props.editarItem(item)">
                         <v-icon>mdi-pencil</v-icon>
                     </v-btn>
-                    <v-btn icon color="red" @click="eliminarItem(item)">
+                    <v-btn icon color="red" @click="props.eliminarItem(item)">
                         <v-icon>mdi-delete</v-icon>
                     </v-btn>
                 </div>

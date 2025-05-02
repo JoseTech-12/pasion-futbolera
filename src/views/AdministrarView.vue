@@ -5,21 +5,46 @@ import TableUsers from '../components/TableUsers.vue';
 import { useUserStore } from '../store/UserStore';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import { useUsersLogStore } from '../store/UserLogStore';
+import router from '../router';
+
+const storeLog = useUsersLogStore()
+const { user } = storeToRefs(storeLog)
 
 const store = useUserStore();
 const { users, headers } = storeToRefs(store)
+
 
 onMounted(async () => {
     await store.fetchUsers()
 
 })
 
-
 const usersList = computed(() => users.value);
 const headersList = computed(() => headers.value)
 
-const item = usersList.value
-const header = headersList.value
+
+const eliminarItem = async (item) => {
+    const confirmacion = confirm(`¿Estás seguro de que deseas eliminar a ${item.nombre}?`)
+    if (user.value.id === item.id) {
+        alert('No se puede eliminar el usuario administrador')
+        return
+    }
+    if (confirmacion) {
+        try {
+            await store.deleteUserById(item.id)
+            store.fetchUsers()
+        } catch (error) {
+            console.error('Error al eliminar el usuario:', error)
+        }
+    }
+}
+
+const editarItem = (item) => {
+
+    router.push({ name: 'editar-usuario', params: { id: item.id } })
+
+}
 
 </script>
 
@@ -28,7 +53,10 @@ const header = headersList.value
     <div class="container-btn-agregar">
         <v-btn class="btn-agregar">
             <v-icon>mdi-plus</v-icon>
-            <span>Agregar Usuario</span>
+            <router-link class="links" :to="{ name: 'crear-usuario' }">
+                <span>Agregar Usuario</span>
+            </router-link>
+
         </v-btn>
     </div>
     <div class="container">
@@ -36,8 +64,12 @@ const header = headersList.value
             <p>Lista de usuarios registrados en la tienda.</p>
         </div>
 
-        <TableUsers :items="usersList" :headers="headersList" />
+        <TableUsers :eliminarItem="eliminarItem" :items="usersList" :headers="headersList" :editarItem="editarItem" />
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.links {
+    text-decoration: none;
+}
+</style>
