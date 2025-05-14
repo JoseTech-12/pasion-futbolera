@@ -6,6 +6,10 @@ import VentasView from '../views/VentasView.vue'
 import AdministrarView from '../views/AdministrarView.vue'
 import NewUserView from '../views/NewUserView.vue'
 import EditarUsuarios from '../views/EditarUsuarios.vue'
+import NewProductView from '../views/NewProductView.vue'
+import EditarProductoView from '../views/EditarProductoView.vue'
+import CreateClientView from '../views/CreateClientView.vue'
+import EditarClienteView from '../views/EditarClienteView.vue'
 
 
 
@@ -65,7 +69,34 @@ const routes = [
         component: EditarUsuarios,
         meta: { requiresAuth: true },
         props: true
+    },
+    {
+        path: '/pasion-futbolera/agregar-producto/',
+        name: 'agregar-producto',
+        component: NewProductView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/editar-producto/:id',
+        name: 'editar-producto',
+        component: EditarProductoView,
+        meta: { requiresAuth: true },
+        props: true
+    },
+    {
+        path: '/pasion-futbolera/agregar-cliente/',
+        name: 'agregar-cliente',
+        component: CreateClientView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/editar-cliente/:id',
+        name: 'editar-cliente',
+        component: EditarClienteView,
+        meta: { requiresAuth: true },
+        props: true
     }
+
 ]
 
 const router = createRouter({

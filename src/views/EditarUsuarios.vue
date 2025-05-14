@@ -5,7 +5,7 @@ import FormUser from '../components/FormUser.vue';
 import { useRoute } from 'vue-router';
 import { useUserStore } from '../store/UserStore';
 import { ref, onMounted } from 'vue';
-import { userShowId } from '../services/userServices';
+
 
 const router = useRoute()
 const id = router.params.id
@@ -30,7 +30,7 @@ onMounted(async () => {
 
 <template>
     <Header />
-    <FormUser title="Editar Usuario" :userShowId="user" />
+    <FormUser title="Actualizar Usuario" :userShowId="user" />
 </template>
 
 <style scoped></style>
