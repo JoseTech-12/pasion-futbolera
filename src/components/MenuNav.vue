@@ -69,6 +69,20 @@ const cerrarDrawer = () => {
         </template>
 
       </v-list-item>
+      <v-list-item class="items" :to="{ name: 'crear-venta' }" link @click="cerrarDrawer" v-if="isAdmin">
+        <template class="conten-items" #prepend>
+          <v-icon>mdi-cart</v-icon>
+          <v-list-item-title>Realizar venta</v-list-item-title>
+        </template>
+
+      </v-list-item>
+      <v-list-item class="items" :to="{ name: 'creditos' }" link @click="cerrarDrawer" v-if="isAdmin">
+        <template class="conten-items" #prepend>
+          <v-icon>mdi-credit-card</v-icon>
+          <v-list-item-title>Creditos</v-list-item-title>
+        </template>
+
+      </v-list-item>
 
     </v-navigation-drawer>
 

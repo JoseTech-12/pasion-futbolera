@@ -6,10 +6,12 @@
     <div class="conteiner">
         <h2>Gestionar venta</h2>
         <div class="conten-bnt">
-            <v-btn class="btn-agregar">
-                <v-icon>mdi-plus</v-icon>
-                <span>Nueva Venta</span>
-            </v-btn>
+            <router-link :to="{ name: 'crear-venta' }">
+                <v-btn class="btn-agregar">
+                    <v-icon>mdi-plus</v-icon>
+                    <span>Nueva Venta</span>
+                </v-btn>
+            </router-link>
             <router-link :to="{ name: 'ventas' }">
                 <v-btn class="btn-historial">
                     <v-icon>mdi-book</v-icon>

@@ -6,7 +6,9 @@ const props = defineProps({
     items: Array,
     headers: Array,
     eliminarItem: Function,
-    editarItem: Function
+    editarItem: Function,
+    pagarItem: Function,
+
 })
 
 const searchQuery = ref('');
@@ -30,12 +32,17 @@ const filteredItems = computed(() =>
 
             <template #item.acciones="{ item }">
                 <div class="d-flex align-center ga-1">
-                    <v-btn icon color="blue" @click="props.editarItem(item)">
+                    <v-btn icon color="blue" @click="props.editarItem(item)" :disabled="item.estado === 'pagado'">
                         <v-icon>mdi-pencil</v-icon>
                     </v-btn>
                     <v-btn icon color="red" @click="props.eliminarItem(item)">
                         <v-icon>mdi-delete</v-icon>
                     </v-btn>
+                    <v-btn v-if="props.pagarItem" icon color="green" :disabled="item.estado === 'pagado'"
+                        @click="props.pagarItem(item)">
+                        <v-icon>mdi-cash</v-icon>
+                    </v-btn>
+
                 </div>
             </template>
 

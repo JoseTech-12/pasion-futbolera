@@ -12,6 +12,8 @@ const storeClients = useClientsStore()
 const { clients } = storeToRefs(storeClients)
 const { products } = storeToRefs(store);
 
+const valor = clients.value.length
+const valor2 = products.value.reduce((total, producto) => total + producto.stock, 0);
 
 
 const headersProductos = [
@@ -34,11 +36,11 @@ const headersusers = [
         </router-link>
 
         <router-link class="links" :to="{ name: 'productos' }">
-            <CardResumen titulo="Inventario" valor="150" descripcion="Camisas en stock" />
+            <CardResumen titulo="Inventario" :valor="valor2" descripcion="Camisas en stock" />
         </router-link>
 
         <router-link class="links" :to="{ name: 'usuarios' }">
-            <CardResumen titulo="Usuarios" valor="54" descripcion="Usuarios Registrados" />
+            <CardResumen titulo="Usuarios" :valor="valor" descripcion="Usuarios Registrados" />
         </router-link>
 
         <GestionVenta />

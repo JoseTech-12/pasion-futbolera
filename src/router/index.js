@@ -10,6 +10,10 @@ import NewProductView from '../views/NewProductView.vue'
 import EditarProductoView from '../views/EditarProductoView.vue'
 import CreateClientView from '../views/CreateClientView.vue'
 import EditarClienteView from '../views/EditarClienteView.vue'
+import CrearVentaView from '../views/CrearVentaView.vue'
+import creditsView from '../views/CreditsView.vue'
+import CreateCreditoView from '../views/CreateCreditoView.vue'
+import EditarCretidoView from '../views/EditarCretidoView.vue'
 
 
 
@@ -95,7 +99,33 @@ const routes = [
         component: EditarClienteView,
         meta: { requiresAuth: true },
         props: true
+    },
+    {
+        path: '/pasion-futbolera/crear-venta/',
+        name: 'crear-venta',
+        component: CrearVentaView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/creditos/',
+        name: 'creditos',
+        component: creditsView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/crear-creditos/',
+        name: 'crear-creditos',
+        component: CreateCreditoView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/pasion-futbolera/editar-credito/:id',
+        name: 'editar-credito',
+        component: EditarCretidoView
     }
+
+
+
 
 ]
 
